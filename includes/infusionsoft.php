@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: 	Infusionsoft Developers Plugin
+Plugin Name: 	Shoreline Keap
 Plugin URI: 	http://wordpress.org/plugins/infusionsoft-for-developers/
-Description: 	This plugin is primarily designed for developers adding Infusionsoft API hooks for use in WP. It only provides a basic feature set for the average WordPress user.
+Description: 	Send form leads to Keap
 Version: 		0.2
-Author: 		Infusionsoft
-Author URI: 	http://infusionsoft.com
+Author: 		Shoreline Media Marketing
+Author URI: 	https://shoreline.media
 License: 		GPLv2 or later
 License URI: 	http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -39,14 +39,14 @@ class Infusionsoft {
 		$this->api_key = $api_key;
 
 		if ( empty( $this->subdomain ) || empty( $this->api_key ) ) {
-			$this->error = new WP_Error( 'invalid-request', __( 'You must provide a subdomain and API key for your Infusionsoft application.', 'infusionsoftwp' ) );
+			$this->error = new WP_Error( 'invalid-request', __( 'You must provide a subdomain and API key for your Keap application.', 'infusionsoftwp' ) );
 		}
 	}
 
 	public function __call( $name, $arguments ) {
 		// Make sure no error already exists
 		if ( $this->error ) {
-			return new WP_Error( 'invalid-request', __( 'You must provide a subdomain and API key for your Infusionsoft application.', 'infusionsoftwp' ) );
+			return new WP_Error( 'invalid-request', __( 'You must provide a subdomain and API key for your Keap application.', 'infusionsoftwp' ) );
 		}
 
 		// Get the full method name with the service and method

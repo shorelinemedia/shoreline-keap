@@ -26,7 +26,7 @@ class Infusionsoft_Settings {
 	 * Adds a link to the Infusionsoft to the Settings menu
 	 */
 	public function menu() {
-		add_options_page( 'Infusionsoft', 'Infusionsoft', 'manage_options', 'infusionsoft', array( $this, 'settings_page' ) );
+		add_options_page( 'Shoreline Keap', 'Shoreline Keap', 'manage_options', 'infusionsoft', array( $this, 'settings_page' ) );
 	}
 
 	/**
@@ -93,7 +93,7 @@ class Infusionsoft_Settings {
 		?>
 		<div class="wrap">
 			<div id="icon-options-general" class="icon32"><br></div>
-			<h2>Infusionsoft Developer</h2>
+			<h2>Keap Settings</h2>
 			<form method="post" action="options.php">
 				<?php settings_fields( 'infusionsoft_settings' ); ?>
 				<?php do_settings_sections( 'infusionsoftwp' ); ?>

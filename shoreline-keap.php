@@ -1,20 +1,22 @@
 <?php
 /*
-Plugin Name: Infusionsoft Developer Plugin
-Plugin URI: http://infusionsoft.com/wordpress/
-Description: The core application that serves Infusionsoft API hooks for developers
-Version: 0.1
-Author: Infusionsoft
-Author URI: http://infusionsoft.com
-License: GPL2
+Plugin Name: 			Shoreline Keap
+Plugin URI: 			https://shoreline.media
+Description: 			Send form leads to Keap
+Version: 				0.2
+Author: 				Shoreline Media Marketing
+Author URI: 			https://shoreline.media
+License: 				GPLv2 or later
+License URI: 			http://www.gnu.org/licenses/gpl-2.0.html
+Github Updater URI: 	https://github.com/shorelinemedia/shoreline-keap
 */
 
 global $infusionsoft;
 
-require_once plugin_dir_path( __FILE__ ) . 'infusionsoft.php';
-require_once plugin_dir_path( __FILE__ ) . 'infusionsoft-examples.php';
-require_once plugin_dir_path( __FILE__ ) . 'infusionsoft-gravityforms.php';
-require_once plugin_dir_path( __FILE__ ) . 'infusionsoft-settings.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/infusionsoft.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/infusionsoft-examples.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/infusionsoft-gravityforms.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/infusionsoft-settings.php';
 require_once ABSPATH . 'wp-admin/includes/plugin.php';
 
 // Load main Infusionsoft API
@@ -25,7 +27,9 @@ if ( isset( $settings['subdomain'] ) && isset( $settings['api_key'] ) && isset( 
 	// Make sure Infusionsoft connected
 	if ( is_wp_error( $infusionsoft->error ) ) {
 		$error = $infusionsoft->error->get_error_message();
-		add_action( 'admin_notices', create_function( '$error', 'echo "<div class=\"error\"><p><strong>Infusionsoft Error:</strong> ' . $error . '</p></div>";' ) );
+		add_action( 'admin_notices', function() use ( $error ) {
+			echo "<div class=\"error\"><p><strong>Keap Error:</strong> " . $error . "</p></div>";
+		});
 	}
 
 }
